@@ -1,4 +1,4 @@
 install:
 		composer install
-test:
+test: install
 		composer test
