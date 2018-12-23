@@ -13,6 +13,7 @@ class ReversePunctuations
 {
     /**
      * @param $message
+     * @return string
      */
     public static function reverse ($message)
     {

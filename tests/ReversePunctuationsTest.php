@@ -8,12 +8,14 @@
 
 namespace App\Tests;
 
-use
+use App\Src\ReversePunctuations;
+
 class ReversePunctuationsTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testReverse()
     {
+
 
     }
 }
