@@ -17,18 +17,23 @@ class ReversePunctuations
      */
     public static function reverse ($message)
     {
-        $regExpPattern1 = '/[^[:punct:]]/';
+        $regExpPattern1 = '/[[:punct:]]/';
 
-        $result = array_reverse(preg_split($regExpPattern1, $message, -1, PREG_SPLIT_NO_EMPTY));
 
-        $nresult = '';
-        $words = preg_split('/[[:punct:]]/', $message, -1, PREG_SPLIT_NO_EMPTY);
-
-        foreach ( $words as $key => $word) {
-
-            $nresult .= $word . $result[$key];
+        $result = preg_split('//u', $message, null, PREG_SPLIT_NO_EMPTY);
+        $punct = [];
+        foreach ($result as $char) {
+            if (preg_match($regExpPattern1, $char)) {
+                array_push($punct, $char);
+            }
         }
-        return $nresult;
+        foreach ($result as $key => $char) {
+            if (preg_match($regExpPattern1, $char)) {
+                $result[$key] = array_pop($punct);
+            }
+
+        }
+        return implode($result);
     }
 
 
